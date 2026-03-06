@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Protocolos - Centro Terapéutico Neuroplus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: {
+            ink: {
+              50:  '#f7fafc',
+              100: '#e3f2fd',
+              200: '#e1e6fa',
+              300: '#ffe4ec',
+              400: '#c8e6c9',
+              500: '#81d4fa',
+              600: '#ba68c8',
+              700: '#f48fb1',
+              800: '#1976d2',
+              900: '#1976d2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    body {
+      background: linear-gradient(135deg, #e3f2fd 0%, #e1e6fa 40%, #ffe4ec 80%, #c8e6c9 100%);
+      min-height: 100vh;
+    }
+    details > summary {
+      user-select: none;
+      cursor: pointer;
+    }
+    details > summary::-webkit-details-marker {
+      margin-right: 0.5rem;
+    }
+  </style>
+  <script>
+    function scrollAndExpand(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        if (!element.open) {
+          element.open = true;
+        }
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  </script>
+</head>
+<body class="bg-white/80 text-ink-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="/assets/branding/logo-neuroplus.png" alt="Neuroplus" class="h-14 w-auto"/>
+        <span class="sr-only">Neuroplus</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium text-ink-700">
+        <a href="index.html#servicios" class="nav-link hover:text-ink-900">Servicios</a>
+        <div class="relative group">
+          <button class="nav-link hover:text-ink-900">Equipo</button>
+          <div class="absolute left-0 mt-2 w-48 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="equipo/jessica.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Jéssica Ruiz Varela</a>
+            <a href="equipo/yeniffer.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Yeniffer Durán Ruiz</a>
+            <a href="equipo/camila.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Camila Veloso Sepúlveda</a>
+            <a href="equipo/alejandra.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Alejandra Vallejos Meza</a>
+            <a href="equipo/emily.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Emily Zúñiga Bravo</a>
+            <a href="equipo/ximena.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Ximena Zúñiga Cerna</a>
+          </div>
+        </div>
+        <a href="index.html#metodo" class="nav-link hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="nav-link hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="nav-link hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="nav-link hover:text-ink-900">Convenios</a>
+        <div class="relative group">
+          <button id="infoUserBtn" class="nav-link hover:text-ink-900">Información para el usuario</button>
+          <div id="infoUserDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="politicas.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Políticas</a>
+            <a href="protocolos.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Protocolos</a>
+            <a href="aranceles.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Aranceles</a>
+          </div>
+        </div>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/56937282799" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink-800 text-white text-sm font-semibold hover:bg-ink-700 shadow-soft">Reservar hora</a>
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-ink-100" aria-label="Abrir menú">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-ink-100 bg-white">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="index.html#servicios" class="hover:text-ink-900">Servicios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Equipo</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="equipo/jessica.html" class="block hover:text-ink-900">Jéssica Ruiz Varela</a>
+            <a href="equipo/yeniffer.html" class="block hover:text-ink-900">Yeniffer Durán Ruiz</a>
+            <a href="equipo/camila.html" class="block hover:text-ink-900">Camila Veloso Sepúlveda</a>
+            <a href="equipo/alejandra.html" class="block hover:text-ink-900">Alejandra Vallejos Meza</a>
+            <a href="equipo/emily.html" class="block hover:text-ink-900">Emily Zúñiga Bravo</a>
+            <a href="equipo/ximena.html" class="block hover:text-ink-900">Ximena Zúñiga Cerna</a>
+          </div>
+        </details>
+        <a href="index.html#metodo" class="hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="hover:text-ink-900">Convenios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Información para el usuario</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="politicas.html" class="block hover:text-ink-900">Políticas</a>
+            <a href="protocolos.html" class="block hover:text-ink-900">Protocolos</a>
+            <a href="aranceles.html" class="block hover:text-ink-900">Aranceles</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex gap-6 max-w-7xl mx-auto mt-6 mb-12">
+    <!-- Sidebar de navegación -->
+    <aside class="hidden md:block w-80 flex-shrink-0">
+      <div class="sticky top-24 bg-white/90 rounded-2xl p-6 shadow-soft">
+        <h3 class="text-lg font-semibold mb-4 text-ink-900">Protocolos</h3>
+        <nav class="flex flex-col gap-2">
+          <details class="group" open>
+            <summary class="px-4 py-2 rounded-lg text-ink-700 hover:bg-ink-100 hover:text-ink-900 transition-colors cursor-pointer font-medium">
+              Protocolo de Pago de Sesiones
+            </summary>
+            <div class="ml-2 mt-2 space-y-1 border-l-2 border-ink-200 pl-3">
+              <a onclick="scrollAndExpand('pago-1')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">1. Modalidad de pago</a>
+              <a onclick="scrollAndExpand('pago-2')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">2. Momento del pago</a>
+              <a onclick="scrollAndExpand('pago-3')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">3. Reserva de horario</a>
+              <a onclick="scrollAndExpand('pago-4')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">4. Emisión de documentos</a>
+              <a onclick="scrollAndExpand('pago-5')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">5. Devoluciones</a>
+              <a onclick="scrollAndExpand('pago-6')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">6. Regularización de pagos</a>
+              <a onclick="scrollAndExpand('pago-7')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">7. Transparencia</a>
+            </div>
+          </details>
+
+          <details class="group">
+            <summary class="px-4 py-2 rounded-lg text-ink-700 hover:bg-ink-100 hover:text-ink-900 transition-colors cursor-pointer font-medium">
+              Protocolo de Planes Mensuales
+            </summary>
+            <div class="ml-2 mt-2 space-y-1 border-l-2 border-ink-200 pl-3">
+              <a onclick="scrollAndExpand('planes-1')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">1. Definición</a>
+              <a onclick="scrollAndExpand('planes-2')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">2. Pago anticipado</a>
+              <a onclick="scrollAndExpand('planes-3')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">3. Programación</a>
+              <a onclick="scrollAndExpand('planes-4')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">4. Inasistencias</a>
+              <a onclick="scrollAndExpand('planes-5')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">5. Vigencia del plan</a>
+              <a onclick="scrollAndExpand('planes-6')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">6. Devoluciones</a>
+              <a onclick="scrollAndExpand('planes-7')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">7. Continuidad</a>
+            </div>
+          </details>
+
+          <details class="group">
+            <summary class="px-4 py-2 rounded-lg text-ink-700 hover:bg-ink-100 hover:text-ink-900 transition-colors cursor-pointer font-medium">
+              Protocolo de Informes Adicionales
+            </summary>
+            <div class="ml-2 mt-2 space-y-1 border-l-2 border-ink-200 pl-3">
+              <a onclick="scrollAndExpand('informes-1')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">1. Alcance</a>
+              <a onclick="scrollAndExpand('informes-2')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">2. Solicitud</a>
+              <a onclick="scrollAndExpand('informes-3')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">3. Plazo</a>
+              <a onclick="scrollAndExpand('informes-4')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">4. Costo</a>
+              <a onclick="scrollAndExpand('informes-5')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">5. Forma de pago</a>
+              <a onclick="scrollAndExpand('informes-6')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">6. Entrega</a>
+              <a onclick="scrollAndExpand('informes-7')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">7. Uso del informe</a>
+            </div>
+          </details>
+
+          <details class="group">
+            <summary class="px-4 py-2 rounded-lg text-ink-700 hover:bg-ink-100 hover:text-ink-900 transition-colors cursor-pointer font-medium">
+              Protocolo de Sala de Espera
+            </summary>
+            <div class="ml-2 mt-2 space-y-1 border-l-2 border-ink-200 pl-3">
+              <a onclick="scrollAndExpand('sala-1')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">1. Permanencia</a>
+              <a onclick="scrollAndExpand('sala-2')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">2. Supervisión de niños</a>
+              <a onclick="scrollAndExpand('sala-3')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">3. Respeto del ambiente</a>
+              <a onclick="scrollAndExpand('sala-4')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">4. Dispositivos</a>
+              <a onclick="scrollAndExpand('sala-5')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">5. Mobiliario</a>
+              <a onclick="scrollAndExpand('sala-6')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">6. Ingreso a box</a>
+              <a onclick="scrollAndExpand('sala-7')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">7. Alimentos</a>
+              <a onclick="scrollAndExpand('sala-8')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">8. Puntualidad</a>
+              <a onclick="scrollAndExpand('sala-9')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">9. Responsabilidad</a>
+              <a onclick="scrollAndExpand('sala-10')" class="block px-3 py-1 rounded text-sm text-ink-600 hover:bg-ink-50 hover:text-ink-900 cursor-pointer">10. Cumplimiento</a>
+            </div>
+          </details>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <div class="flex-1 bg-white/90 rounded-2xl p-6 shadow-soft md:max-w-3xl">
+      <h1 class="text-3xl font-extrabold mb-6 text-ink-900">Protocolos</h1>
+      <p class="mb-8 text-ink-700">Los siguientes protocolos regulan procesos clave del Centro Terapéutico Neuroplus para garantizar transparencia, organización y continuidad en la atención.</p>
+
+      <!-- PROTOCOLO DE PAGO DE SESIONES -->
+      <section class="mb-8 bg-gradient-to-r from-blue-50 to-blue-100/50 p-6 rounded-xl shadow-soft border-l-4 border-ink-800">
+        <h2 class="text-2xl font-bold text-ink-900 mb-2">Protocolo de Pago de Sesiones</h2>
+        <p class="text-ink-700 mb-4 italic">Centro Terapéutico Neuroplus</p>
+        <p class="text-ink-700 mb-6">Con el propósito de garantizar la transparencia, la organización administrativa y la continuidad de los procesos terapéuticos, el Centro Terapéutico Neuroplus establece el siguiente protocolo de pago para las atenciones profesionales.</p>
+        
+        <details class="mb-4 group" open id="pago-1">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            1. Modalidad de pago
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El pago de las sesiones deberá realizarse mediante alguna de las siguientes modalidades:</p>
+            <ul class="list-disc list-inside text-ink-700 space-y-1 mb-2">
+              <li>Transferencia bancaria</li>
+              <li>Pago electrónico</li>
+              <li>Pago presencial (según disponibilidad del centro)</li>
+            </ul>
+            <p class="text-ink-700 leading-relaxed">Los datos de pago serán proporcionados por el Centro al momento de agendar la atención.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="pago-2">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            2. Momento del pago
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Las sesiones deberán ser canceladas de manera anticipada o el mismo día de la atención, previo al inicio de la sesión.</p>
+            <p class="text-ink-700 leading-relaxed">En el caso de sesiones programadas de manera periódica, el centro podrá solicitar el pago semanal o mensual anticipado, con el fin de asegurar la reserva del horario asignado.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="pago-3">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            3. Reserva de horario
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">La confirmación del horario de atención se considerará efectiva una vez realizado el pago correspondiente o cuando el usuario se encuentre al día en sus pagos.</p>
+            <p class="text-ink-700 leading-relaxed">El centro se reserva el derecho de reasignar el horario en caso de falta de pago reiterada o incumplimiento del protocolo establecido.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="pago-4">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            4. Emisión de documentos tributarios
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El Centro Terapéutico Neuroplus emitirá el correspondiente documento tributario (boleta o factura) por cada sesión pagada, de acuerdo con la normativa vigente.</p>
+            <p class="text-ink-700 leading-relaxed">En caso de requerir factura, el usuario deberá proporcionar previamente los datos de facturación correspondientes.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="pago-5">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            5. Devoluciones
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">En general, no se realizan devoluciones de pagos correspondientes a sesiones ya programadas, salvo en situaciones excepcionales debidamente evaluadas por la Dirección del Centro.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="pago-6">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            6. Regularización de pagos pendientes
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Para mantener la continuidad del proceso terapéutico, el usuario deberá mantener sus pagos al día.</p>
+            <p class="text-ink-700 leading-relaxed">En caso de existir pagos pendientes, el Centro podrá suspender temporalmente las atenciones hasta la regularización de la deuda.</p>
+          </div>
+        </details>
+
+        <details class="group" id="pago-7">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            7. Transparencia y resguardo de la información
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Toda la información relacionada con pagos, sesiones realizadas y documentos tributarios será resguardada por el Centro, manteniendo la confidencialidad y el acceso a la información cuando el usuario lo requiera.</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- PROTOCOLO DE PLANES MENSUALES -->
+      <section class="mb-8 bg-gradient-to-r from-purple-50 to-purple-100/50 p-6 rounded-xl shadow-soft border-l-4 border-purple-600">
+        <h2 class="text-2xl font-bold text-ink-900 mb-4">Protocolo de Planes Mensuales o Pack de Sesiones</h2>
+        <p class="text-ink-700 mb-4 italic">Centro Terapéutico Neuroplus</p>
+        <p class="text-ink-700 mb-6">Con el objetivo de favorecer la continuidad de los procesos terapéuticos y facilitar la organización administrativa de las atenciones, el Centro Terapéutico Neuroplus establece el siguiente protocolo para la contratación de planes mensuales o pack de sesiones terapéuticas.</p>
+        
+        <details class="mb-4 group" open id="planes-1">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            1. Definición de planes o pack de sesiones
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Los planes mensuales o pack de sesiones corresponden a un conjunto de sesiones terapéuticas previamente acordadas entre el Centro y el usuario, las cuales se programan dentro de un periodo determinado según la planificación terapéutica del profesional tratante.</p>
+            <p class="text-ink-700 leading-relaxed">Estos planes buscan favorecer la continuidad del proceso terapéutico y la organización de los horarios de atención.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="planes-2">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            2. Pago anticipado
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Los planes mensuales o pack de sesiones deberán ser cancelados de manera anticipada, previo al inicio del periodo correspondiente o antes de la realización de la primera sesión contemplada en el plan.</p>
+            <p class="text-ink-700 leading-relaxed">La reserva y mantención del horario terapéutico quedará confirmada únicamente una vez realizado el pago correspondiente.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="planes-3">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            3. Programación de sesiones
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Las sesiones incluidas dentro del plan o pack serán programadas previamente según la disponibilidad del profesional y la planificación terapéutica del usuario.</p>
+            <p class="text-ink-700 leading-relaxed">Cualquier modificación de horario deberá realizarse conforme a la Política de Inasistencias y Reprogramación de Sesiones del Centro.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="planes-4">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            4. Inasistencias dentro del plan
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">En caso de inasistencia a una sesión contemplada dentro del plan, se aplicarán las condiciones establecidas en la Política de Inasistencias del Centro.</p>
+            <p class="text-ink-700 leading-relaxed">Las sesiones no realizadas por inasistencia sin aviso dentro del plazo establecido serán consideradas como sesiones realizadas y no serán recuperables.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="planes-5">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            5. Vigencia del plan
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Los planes mensuales o pack de sesiones deberán ser utilizados dentro del periodo acordado al momento de su contratación.</p>
+            <p class="text-ink-700 leading-relaxed">Las sesiones no utilizadas dentro del plazo establecido no serán acumulables ni transferibles a periodos posteriores, salvo en situaciones excepcionales evaluadas por la Dirección del Centro.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="planes-6">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            6. Devoluciones
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Los planes o pack de sesiones no contemplan devoluciones una vez iniciado el periodo de atención, salvo en situaciones excepcionales debidamente justificadas y evaluadas por la Dirección del Centro.</p>
+          </div>
+        </details>
+
+        <details class="group" id="planes-7">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            7. Continuidad del tratamiento
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">La contratación de planes o pack de sesiones busca favorecer la continuidad del proceso terapéutico, por lo que se recomienda mantener una asistencia regular y cumplir con las condiciones establecidas por el Centro.</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- PROTOCOLO DE INFORMES -->
+      <section class="mb-8 bg-gradient-to-r from-pink-50 to-pink-100/50 p-6 rounded-xl shadow-soft border-l-4 border-pink-600">
+        <h2 class="text-2xl font-bold text-ink-900 mb-4">Protocolo de Solicitud de Informes Adicionales</h2>
+        <p class="text-ink-700 mb-4 italic">Centro Terapéutico Neuroplus</p>
+        <p class="text-ink-700 mb-6">Con el objetivo de resguardar la adecuada organización del trabajo clínico y administrativo del Centro Terapéutico Neuroplus, se establece el siguiente protocolo para la solicitud de informes adicionales a la evaluación inicial.</p>
+        
+        <details class="mb-4 group" open id="informes-1">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            1. Alcance
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El presente protocolo regula la solicitud de informes clínicos adicionales, distintos al informe entregado como parte del proceso de evaluación inicial.</p>
+            <p class="text-ink-700 leading-relaxed mb-2">Estos informes pueden ser requeridos para distintos fines, tales como:</p>
+            <ul class="list-disc list-inside text-ink-700 space-y-1">
+              <li>Presentación en establecimientos educacionales</li>
+              <li>Evaluaciones médicas o derivaciones a otros profesionales</li>
+              <li>Procesos administrativos o institucionales</li>
+              <li>Actualización de antecedentes clínicos</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="informes-2">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            2. Solicitud del informe
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">La solicitud de informes adicionales deberá ser realizada por el usuario o su apoderado responsable, a través de los canales oficiales de comunicación del Centro (WhatsApp institucional, correo electrónico o de manera presencial).</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="informes-3">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            3. Plazo de solicitud
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Con el fin de garantizar el tiempo necesario para la elaboración del documento, la solicitud del informe deberá realizarse con al menos 2 semanas de anticipación respecto a la fecha en que se requiera el documento.</p>
+            <p class="text-ink-700 leading-relaxed">Las solicitudes realizadas fuera de este plazo quedarán sujetas a disponibilidad del profesional tratante.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="informes-4">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            4. Costo del informe
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">La elaboración de informes adicionales tendrá un costo de $12.000 (doce mil pesos) por documento solicitado.</p>
+            <p class="text-ink-700 leading-relaxed">Este valor corresponde al tiempo profesional destinado a la revisión de antecedentes clínicos, elaboración y redacción del informe.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="informes-5">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            5. Forma de pago
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El pago del informe deberá ser cancelado previamente a la entrega del documento, mediante las modalidades de pago disponibles en el Centro.</p>
+            <p class="text-ink-700 leading-relaxed">La entrega del informe se realizará únicamente una vez confirmado el pago correspondiente.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="informes-6">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            6. Entrega del informe
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El informe podrá ser entregado:</p>
+            <ul class="list-disc list-inside text-ink-700 space-y-1">
+              <li>En formato digital, mediante envío al correo electrónico del usuario o apoderado, o</li>
+              <li>En formato impreso, si así es solicitado previamente.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="group" id="informes-7">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            7. Uso del informe
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Los informes emitidos por el Centro Terapéutico Neuroplus tienen carácter clínico y confidencial, y su uso será responsabilidad del usuario o apoderado que lo solicite.</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- PROTOCOLO DE SALA DE ESPERA -->
+      <section class="mb-8 bg-gradient-to-r from-green-50 to-green-100/50 p-6 rounded-xl shadow-soft border-l-4 border-green-600">
+        <h2 class="text-2xl font-bold text-ink-900 mb-4">Protocolo de Uso de Sala de Espera</h2>
+        <p class="text-ink-700 mb-4 italic">Centro Terapéutico Neuroplus</p>
+        <p class="text-ink-700 mb-6">Con el objetivo de resguardar un ambiente seguro, respetuoso y adecuado para todos los usuarios y profesionales del Centro Terapéutico Neuroplus, se establece el siguiente protocolo para el uso de la sala de espera.</p>
+        
+        <details class="mb-4 group" open id="sala-1">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            1. Permanencia en sala de espera
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">La sala de espera está destinada a los usuarios y sus acompañantes mientras aguardan el inicio o finalización de su sesión terapéutica.</p>
+            <p class="text-ink-700 leading-relaxed">Se solicita permanecer en este espacio de manera ordenada y respetuosa, procurando mantener un ambiente tranquilo que favorezca el bienestar de todos los asistentes.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-2">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            2. Supervisión de niños y niñas
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Los niños, niñas y adolescentes que se encuentren en la sala de espera deberán permanecer bajo la supervisión directa de su apoderado o adulto responsable en todo momento.</p>
+            <p class="text-ink-700 leading-relaxed">El Centro no se hace responsable por situaciones que puedan ocurrir cuando los menores se encuentren sin supervisión dentro de este espacio.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-3">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            3. Respeto por el ambiente terapéutico
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Considerando que en el Centro se realizan intervenciones terapéuticas simultáneamente, se solicita:</p>
+            <ul class="list-disc list-inside text-ink-700 space-y-1">
+              <li>Mantener un tono de voz moderado.</li>
+              <li>Evitar correr, gritar o realizar juegos que puedan generar ruido excesivo.</li>
+              <li>Respetar la privacidad de otros usuarios y profesionales.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-4">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            4. Uso de dispositivos electrónicos
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Se recomienda mantener el uso de teléfonos móviles u otros dispositivos electrónicos en modo silencioso o con volumen moderado, para no interferir con las sesiones que se realizan en los box de atención.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-5">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            5. Cuidado del mobiliario e instalaciones
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Los usuarios y acompañantes deberán hacer un uso adecuado del mobiliario, juguetes y materiales disponibles en la sala de espera.</p>
+            <p class="text-ink-700 leading-relaxed">En caso de daños intencionales al equipamiento o infraestructura, el Centro podrá solicitar la reparación o reposición del elemento afectado.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-6">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            6. Ingreso a los box de atención
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">El ingreso a los box de atención está permitido únicamente cuando el profesional tratante invite al usuario a ingresar.</p>
+            <p class="text-ink-700 leading-relaxed">No está permitido interrumpir sesiones en curso ni ingresar a espacios terapéuticos sin autorización.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-7">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            7. Alimentos y bebidas
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Para mantener la higiene del espacio común, se solicita evitar el consumo de alimentos dentro de la sala de espera, salvo situaciones excepcionales que requieran ser consideradas por motivos de salud.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-8">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            8. Puntualidad
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">Se recomienda llegar 5 minutos antes de la hora programada de la sesión, con el fin de facilitar la organización de la agenda del centro y evitar interrupciones en las atenciones.</p>
+          </div>
+        </details>
+
+        <details class="mb-4 group" id="sala-9">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            9. Responsabilidad de pertenencias
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed mb-2">Cada usuario y acompañante es responsable del cuidado de sus pertenencias personales.</p>
+            <p class="text-ink-700 leading-relaxed">El Centro no se responsabiliza por pérdidas u olvidos dentro de las instalaciones.</p>
+          </div>
+        </details>
+
+        <details class="group" id="sala-10">
+          <summary class="px-4 py-3 bg-white rounded-lg text-ink-900 font-semibold cursor-pointer hover:bg-ink-50 transition-colors">
+            10. Cumplimiento del protocolo
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-ink-300">
+            <p class="text-ink-700 leading-relaxed">El cumplimiento de estas normas contribuye a mantener un ambiente adecuado para todos los usuarios del Centro. En caso de reiterado incumplimiento, el equipo del Centro podrá solicitar a los usuarios adoptar las medidas necesarias para resguardar la convivencia y el adecuado funcionamiento del espacio.</p>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <!-- Menú móvil -->
+    <div class="md:hidden mb-6 bg-white/90 rounded-2xl p-6 shadow-soft">
+      <h3 class="font-semibold mb-3 text-ink-900">Ir a sección</h3>
+      <div class="flex flex-col gap-2">
+        <a href="#pago-1" class="px-4 py-2 rounded-lg bg-ink-50 text-ink-700 hover:bg-ink-100 transition-colors text-sm">Protocolo de Pago</a>
+        <a href="#planes-1" class="px-4 py-2 rounded-lg bg-ink-50 text-ink-700 hover:bg-ink-100 transition-colors text-sm">Protocolo de Planes</a>
+        <a href="#informes-1" class="px-4 py-2 rounded-lg bg-ink-50 text-ink-700 hover:bg-ink-100 transition-colors text-sm">Protocolo de Informes</a>
+        <a href="#sala-1" class="px-4 py-2 rounded-lg bg-ink-50 text-ink-700 hover:bg-ink-100 transition-colors text-sm">Protocolo de Sala</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-ink-200 bg-white/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-ink-600">
+      <p>&copy; 2026 Centro Terapéutico Neuroplus. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

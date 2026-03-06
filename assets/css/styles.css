@@ -1,0 +1,101 @@
+/* --- Neuroplus Custom Styles --- */
+
+body {
+	color: #1a2233; /* Texto principal más oscuro */
+	font-family: 'Inter', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #14213d;
+	font-weight: 800;
+	letter-spacing: -0.5px;
+}
+
+a, .nav-link {
+	color: #1976d2;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+a:hover, .nav-link:hover {
+	color: #14213d;
+}
+
+.card, .fade-up, .rounded-2xl, .shadow-soft {
+	box-shadow: 0 8px 32px rgba(25, 34, 51, 0.10);
+	border-radius: 1.25rem;
+}
+
+/* Botones más llamativos */
+.btn-primary, .bg-ink-800, .bg-ink-900 {
+	background: linear-gradient(90deg, #1976d2 60%, #66bb6a 100%);
+	color: #fff !important;
+	font-weight: 700;
+	border: none;
+	box-shadow: 0 4px 16px rgba(25, 118, 210, 0.12);
+	transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover, .bg-ink-800:hover, .bg-ink-900:hover {
+	background: linear-gradient(90deg, #14213d 60%, #388e3c 100%);
+	color: #fff !important;
+	box-shadow: 0 8px 24px rgba(25, 34, 51, 0.18);
+}
+
+/* Secciones didácticas: burbujas y resaltados */
+.didactico {
+	background: linear-gradient(120deg, #e3f2fd 60%, #ffe4ec 100%);
+	border-left: 6px solid #1976d2;
+	padding: 1.5rem 2rem;
+	margin: 2rem 0;
+	border-radius: 1.5rem;
+	box-shadow: 0 2px 12px rgba(25, 118, 210, 0.08);
+	font-size: 1.15rem;
+}
+
+/* Animaciones para dinamismo */
+@keyframes bounceIn {
+	0% { opacity: 0; transform: scale(0.8) translateY(40px); }
+	60% { opacity: 1; transform: scale(1.05) translateY(-8px); }
+	100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.anim-bounce {
+	animation: bounceIn 0.9s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+
+/* Tarjetas interactivas */
+.card:hover {
+	transform: scale(1.03) translateY(-6px);
+	box-shadow: 0 12px 32px rgba(25, 34, 51, 0.16);
+	background: #e3f2fd;
+}
+
+/* Mejor contraste para textos secundarios */
+.text-ink-600, .text-ink-700, .text-ink-500 {
+	color: #374151 !important;
+}
+.text-ink-900, .text-ink-800 {
+	color: #14213d !important;
+}
+
+/* Burbujas de info para enfoque didáctico */
+.bubble-info {
+	display: inline-block;
+	background: #fffbe6;
+	color: #1976d2;
+	border-radius: 2rem;
+	padding: 0.4em 1.2em;
+	font-weight: 600;
+	margin: 0.2em 0.5em;
+	box-shadow: 0 2px 8px rgba(197, 202, 233, 0.12);
+	font-size: 1em;
+}
+
+/* Animación de entrada para secciones */
+.fade-in-section {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.7s, transform 0.7s;
+}
+.fade-in-section.visible {
+	opacity: 1;
+	transform: none;
+}

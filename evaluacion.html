@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agendar Evaluación - Centro Terapéutico Neuroplus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: {
+            ink: {
+              50:  '#f7fafc',
+              100: '#e3f2fd',
+              200: '#e1e6fa',
+              300: '#ffe4ec',
+              400: '#c8e6c9',
+              500: '#81d4fa',
+              600: '#ba68c8',
+              700: '#f48fb1',
+              800: '#1976d2',
+              900: '#1976d2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    body {
+      background: linear-gradient(135deg, #e3f2fd 0%, #e1e6fa 40%, #ffe4ec 80%, #c8e6c9 100%);
+      min-height: 100vh;
+    }
+    .shadow-soft{box-shadow:0 16px 40px rgba(0,0,0,.12)}
+    .nav-link{position:relative;padding-bottom:.5rem}
+    .nav-link:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:currentColor;transition:width .25s ease}
+    .nav-link:hover:after{width:100%}
+  </style>
+</head>
+<body class="bg-white/80 text-ink-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="/assets/branding/logo-neuroplus.png" alt="Neuroplus" class="h-14 w-auto"/>
+        <span class="sr-only">Neuroplus</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium text-ink-700">
+        <a href="index.html#servicios" class="nav-link hover:text-ink-900">Servicios</a>
+        <div class="relative group">
+          <a href="index.html#equipo" class="nav-link hover:text-ink-900">Equipo</a>
+          <div class="absolute left-0 mt-2 w-56 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="equipo/jessica.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Jessica</a>
+            <a href="equipo/yeniffer.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Yeniffer</a>
+            <a href="equipo/camila.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Camila</a>
+            <a href="equipo/alejandra.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Alejandra</a>
+            <a href="equipo/emily.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Emily</a>
+            <a href="equipo/ximena.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Ximena</a>
+          </div>
+        </div>
+        <a href="index.html#metodo" class="nav-link hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="nav-link hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="nav-link hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="nav-link hover:text-ink-900">Convenios</a>
+        <div class="relative group">
+          <button id="infoUserBtn" class="nav-link hover:text-ink-900">Información para el usuario</button>
+          <div id="infoUserDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="politicas.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Políticas</a>
+            <a href="protocolos.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Protocolos</a>
+            <a href="aranceles.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Aranceles</a>
+          </div>
+        </div>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-ink-100" aria-label="Abrir menú">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-ink-100 bg-white">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="index.html#servicios" class="hover:text-ink-900">Servicios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Equipo</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="equipo/jessica.html" class="block hover:text-ink-900">Jessica</a>
+            <a href="equipo/yeniffer.html" class="block hover:text-ink-900">Yeniffer</a>
+            <a href="equipo/camila.html" class="block hover:text-ink-900">Camila</a>
+            <a href="equipo/alejandra.html" class="block hover:text-ink-900">Alejandra</a>
+            <a href="equipo/emily.html" class="block hover:text-ink-900">Emily</a>
+            <a href="equipo/ximena.html" class="block hover:text-ink-900">Ximena</a>
+          </div>
+        </details>
+        <a href="index.html#metodo" class="hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="hover:text-ink-900">Convenios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Información para el usuario</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="politicas.html" class="block hover:text-ink-900">Políticas</a>
+            <a href="protocolos.html" class="block hover:text-ink-900">Protocolos</a>
+            <a href="aranceles.html" class="block hover:text-ink-900">Aranceles</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="max-w-2xl mx-auto bg-white/90 rounded-2xl p-8 shadow-soft mt-8 mb-8">
+    <h1 class="text-3xl font-bold text-ink-900 mb-2">Agendar Evaluación</h1>
+    <p class="text-ink-700 mb-6">Selecciona el tipo de evaluación que requieres</p>
+
+    <!-- Paso 1: Selección de tipo de evaluación -->
+    <div id="step1" class="mb-8">
+      <h2 class="text-lg font-semibold text-ink-900 mb-4">Tipo de Evaluación</h2>
+      <div class="space-y-3">
+        <label class="flex items-center p-4 border-2 border-ink-200 rounded-lg cursor-pointer hover:bg-ink-50 transition">
+          <input type="radio" name="evaluacion" value="Psicología" class="w-5 h-5 text-ink-800 cursor-pointer" id="psi">
+          <span class="ml-3 font-medium">Psicología</span>
+        </label>
+        <label class="flex items-center p-4 border-2 border-ink-200 rounded-lg cursor-pointer hover:bg-ink-50 transition">
+          <input type="radio" name="evaluacion" value="Terapia Ocupacional" class="w-5 h-5 text-ink-800 cursor-pointer" id="to">
+          <span class="ml-3 font-medium">Terapia Ocupacional</span>
+        </label>
+        <label class="flex items-center p-4 border-2 border-ink-200 rounded-lg cursor-pointer hover:bg-ink-50 transition">
+          <input type="radio" name="evaluacion" value="Fonoaudiología" class="w-5 h-5 text-ink-800 cursor-pointer" id="fono">
+          <span class="ml-3 font-medium">Fonoaudiología</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Paso 2: Aceptación de Políticas -->
+    <div id="step2" class="hidden mb-8">
+      <h2 class="text-lg font-semibold text-ink-900 mb-4">Aceptación de Políticas y Protocolos</h2>
+      <div class="bg-ink-50 p-4 rounded-lg mb-4">
+        <p class="text-sm text-ink-700 mb-3">Declaro que he leído y acepto los </p>
+        <div class="flex gap-2 flex-wrap">
+          <a href="politicas.html" target="_blank" class="text-ink-800 underline font-medium hover:text-ink-700">Políticas</a>
+          <span class="text-ink-700">y</span>
+          <a href="protocolos.html" target="_blank" class="text-ink-800 underline font-medium hover:text-ink-700">Protocolos</a>
+          <span class="text-ink-700">del Centro Terapéutico Neuroplus</span>
+        </div>
+      </div>
+      <label class="flex items-center p-4 border-2 border-ink-200 rounded-lg cursor-pointer hover:bg-ink-50 transition">
+        <input type="checkbox" id="aceptaCheckbox" class="w-5 h-5 text-ink-800 cursor-pointer">
+        <span class="ml-3 font-medium">Acepto los términos y condiciones</span>
+      </label>
+    </div>
+
+    <!-- Botón de envío -->
+    <div id="step3" class="hidden">
+      <button id="enviarBtn" class="w-full px-6 py-3 rounded-full bg-ink-800 text-white font-semibold hover:bg-ink-700 shadow-soft transition">
+        Solicitar Evaluación por WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const radioButtons = document.querySelectorAll('input[name="evaluacion"]');
+      const step2 = document.getElementById('step2');
+      const step3 = document.getElementById('step3');
+      const aceptaCheckbox = document.getElementById('aceptaCheckbox');
+      const enviarBtn = document.getElementById('enviarBtn');
+
+      // Mostrar paso 2 cuando se selecciona una opción
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', function() {
+          if (this.checked) {
+            step2.classList.remove('hidden');
+            step3.classList.add('hidden');
+            aceptaCheckbox.checked = false;
+          }
+        });
+      });
+
+      // Mostrar botón cuando se acepta el checkbox
+      aceptaCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          step3.classList.remove('hidden');
+        } else {
+          step3.classList.add('hidden');
+        }
+      });
+
+      // Enviar a WhatsApp
+      enviarBtn.addEventListener('click', function() {
+        const selectedEvaluacion = document.querySelector('input[name="evaluacion"]:checked');
+        const now = new Date();
+        const hour = now.getHours();
+        let greeting = 'buenos días';
+        if (hour >= 12 && hour < 18) greeting = 'buenas tardes';
+        else if (hour >= 18) greeting = 'buenas noches';
+
+        const tipoEvaluacion = selectedEvaluacion.value;
+        const message = `Hola ${greeting}, quisiera agendar una evaluación de ${tipoEvaluacion}`;
+        const encoded = encodeURIComponent(message);
+
+        window.open(`https://wa.me/56937282799?text=${encoded}`, '_blank');
+      });
+
+      // Manejo del menú móvil
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-ink-200 bg-white/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-ink-600">
+      <p>&copy; 2024 Centro Terapéutico Neuroplus. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

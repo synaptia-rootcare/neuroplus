@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centro Terapéutico Neuroplus | Temuco</title>
+  <meta name="description" content="Neurorehabilitación integral para niños, jóvenes y adultos. Psicología, Terapia Ocupacional, Fonoaudiología y Educación Diferencial en Temuco." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: {
+            ink: {
+              50:  '#f7fafc',   // blanco azulado muy claro
+              100: '#e3f2fd',   // celeste pastel claro
+              200: '#e1e6fa',   // violeta pastel claro
+              300: '#ffe4ec',   // rosa pastel claro
+              400: '#c8e6c9',   // verde pastel claro
+              500: '#81d4fa',   // celeste pastel medio
+              600: '#ba68c8',   // violeta pastel medio
+              700: '#f48fb1',   // rosa pastel medio
+              800: '#66bb6a',   // verde pastel medio
+              900: '#1976d2',   // celeste fuerte (para textos/botones oscuros)
+            },
+            pastelBlue:   '#81d4fa',
+            pastelPurple: '#ba68c8',
+            pastelGreen:  '#66bb6a',
+            pastelPink:   '#f48fb1',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    body {
+      /* Gradiente pastel suave usando los colores de la paleta */
+      background: linear-gradient(135deg, #e3f2fd 0%, #e1e6fa 40%, #ffe4ec 80%, #c8e6c9 100%);
+      min-height: 100vh;
+    }
+    .shadow-soft{box-shadow:0 16px 40px rgba(0,0,0,.12)}
+    .fade-up{opacity:0;transform:translateY(18px);transition:all .7s ease}
+    .fade-up.in{opacity:1;transform:translateY(0)}
+    #map{width:100%;height:420px;border-radius:1rem}
+    .nav-link{position:relative;padding-bottom:.5rem}
+    .nav-link:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:currentColor;transition:width .25s ease}
+    .nav-link:hover:after{width:100%}
+    .card{transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.14)}
+    .brand img{filter:grayscale(100%);opacity:.85;transition:filter .2s ease,opacity .2s ease}
+    .brand img:hover{filter:none;opacity:1}
+    details>summary::marker{content:""}
+    details>summary{list-style:none}
+    details[open] summary .chev{transform:rotate(180deg)}
+    .logo-tooltip {
+      position: absolute;
+      left: 50%;
+      bottom: -2.2rem;
+      transform: translateX(-50%);
+      background: rgba(25, 118, 210, 0.95);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+      z-index: 10;
+    }
+    .logo-tooltip.visible {
+      opacity: 1;
+    }
+    .logo-tooltip-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"MedicalClinic","name":"Centro Terapéutico Neuroplus","description":"Servicios interdisciplinarios de neurorehabilitación.","address":{"@type":"PostalAddress","streetAddress":"Caupolicán 110, piso 4, oficina 404","addressLocality":"Temuco","addressRegion":"Araucanía","addressCountry":"CL"},"telephone":"+56 9 3728 2799","openingHours":["Mo-Fr 08:30-18:30"],"sameAs":["https://www.instagram.com/centroneuroplus/"]}
+  </script>
+</head>
+<body class="bg-white/80 text-ink-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <!-- Reemplaza por tu archivo -->
+        <img src="/assets/branding/logo-neuroplus.png" alt="Neuroplus" class="h-14 w-auto"/>
+        <span class="sr-only">Neuroplus</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium text-ink-700">
+        <a href="#servicios" class="nav-link hover:text-ink-900">Servicios</a>
+        <div class="relative group">
+          <a href="#equipo" class="nav-link hover:text-ink-900">Equipo</a>
+          <div class="absolute left-0 mt-2 w-56 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="equipo/jessica.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Jessica</a>
+            <a href="equipo/yeniffer.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Yeniffer</a>
+            <a href="equipo/camila.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Camila</a>
+            <a href="equipo/alejandra.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Alejandra</a>
+            <a href="equipo/emily.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Emily</a>
+            <a href="equipo/ximena.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Ximena</a>
+          </div>
+        </div>
+        <a href="#metodo" class="nav-link hover:text-ink-900">Enfoque</a>
+        <a href="#testimonios" class="nav-link hover:text-ink-900">Testimonios</a>
+        <a href="#contacto" class="nav-link hover:text-ink-900">Contacto</a>
+        <a href="#convenios" class="nav-link hover:text-ink-900">Convenios</a>
+        <div class="relative group">
+          <button id="infoUserBtn" class="nav-link hover:text-ink-900">Información para el usuario</button>
+          <div id="infoUserDropdown" class="absolute left-0 mt-2 w-56 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="politicas.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Políticas</a>
+            <a href="protocolos.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Protocolos</a>
+            <a href="aranceles.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Aranceles</a>
+          </div>
+        </div>
+      </nav>
+      <div class="flex items-center gap-3 relative">
+        <button id="reservarBtn" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink-800 text-white text-sm font-semibold hover:bg-ink-700 shadow-soft">Reservar hora</button>
+        
+        <!-- Menú de contacto -->
+        <div id="contactMenu" class="hidden absolute top-full right-0 mt-2 bg-white border border-ink-200 rounded-lg shadow-lg z-50 min-w-48">
+          <button id="whatsappOption" class="w-full text-left px-4 py-3 hover:bg-ink-50 border-b border-ink-200 text-sm font-medium text-ink-900 flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            WhatsApp
+          </button>
+          <button id="emailOption" class="w-full text-left px-4 py-3 hover:bg-ink-50 text-sm font-medium text-ink-900 flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            Correo electrónico
+          </button>
+        </div>
+        
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-ink-100" aria-label="Abrir menú">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-ink-100 bg-white">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="#servicios" class="hover:text-ink-900">Servicios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Equipo</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="equipo/jessica.html" class="block hover:text-ink-900">Jessica</a>
+            <a href="equipo/yeniffer.html" class="block hover:text-ink-900">Yeniffer</a>
+            <a href="equipo/camila.html" class="block hover:text-ink-900">Camila</a>
+            <a href="equipo/alejandra.html" class="block hover:text-ink-900">Alejandra</a>
+            <a href="equipo/emily.html" class="block hover:text-ink-900">Emily</a>
+            <a href="equipo/ximena.html" class="block hover:text-ink-900">Ximena</a>
+          </div>
+        </details>
+        <a href="#metodo" class="hover:text-ink-900">Enfoque</a>
+        <a href="#testimonios" class="hover:text-ink-900">Testimonios</a>
+        <a href="#contacto" class="hover:text-ink-900">Contacto</a>
+        <a href="#convenios" class="hover:text-ink-900">Convenios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Información para el usuario</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="politicas.html" class="block hover:text-ink-900">Políticas</a>
+            <a href="protocolos.html" class="block hover:text-ink-900">Protocolos</a>
+            <a href="aranceles.html" class="block hover:text-ink-900">Aranceles</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative border-b border-ink-100">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1950&auto=format&fit=crop')] bg-cover bg-center opacity-[0.18]"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative">
+      <div class="max-w-4xl">
+  <p class="uppercase tracking-[0.2em] text-xs text-ink-700">Centro terapéutico integral</p>
+  <h1 class="mt-3 text-4xl sm:text-6xl font-extrabold leading-[1.05] text-ink-900">
+          Neurorehabilitación precisa.
+          <span class="block">Experiencia humana.</span>
+        </h1>
+  <p class="mt-5 text-lg text-ink-700 max-w-2xl">Equipo interdisciplinario en Temuco. Psicología, Terapia Ocupacional, Fonoaudiología y Educación Diferencial. Planes por objetivos y seguimiento.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://wa.me/56937282799" target="_blank" class="px-6 py-3 rounded-full bg-ink-800 text-white font-semibold hover:bg-ink-700 shadow-soft">Agendar por WhatsApp</a>
+          <a href="https://www.instagram.com/centroneuroplus/" target="_blank" class="px-6 py-3 rounded-full border border-ink-400 text-ink-900 font-semibold hover:bg-ink-200">Ver Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="py-8 bg-white/80 border-b border-ink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+  <div class="p-4 rounded-2xl bg-ink-50 fade-up"><p class="text-sm font-semibold text-ink-900">Atención integral</p><p class="text-xs text-ink-700">Plan por objetivos</p></div>
+  <div class="p-4 rounded-2xl bg-ink-50 fade-up"><p class="text-sm font-semibold text-ink-900">Equipo multidisciplinario</p><p class="text-xs text-ink-700">Trabajo coordinado</p></div>
+  <div class="p-4 rounded-2xl bg-ink-50 fade-up"><p class="text-sm font-semibold text-ink-900">Enfoque familiar</p><p class="text-xs text-ink-700">Acompañamiento</p></div>
+  <div class="p-4 rounded-2xl bg-ink-50 fade-up"><p class="text-sm font-semibold text-ink-900">Ubicación céntrica</p><p class="text-xs text-ink-700">Caupolicán 110</p></div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-16 bg-white/80 rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-ink-900 fade-up anim-bounce">Servicios</h2>
+  <p class="mt-2 text-ink-700 fade-up">Intervenciones basadas en evidencia con seguimiento.</p>
+      <div class="didactico fade-in-section">
+        <span class="bubble-info">Neurorehabilitación</span>
+        <span class="bubble-info">Psicología</span>
+        <span class="bubble-info">Terapia Ocupacional</span>
+        <span class="bubble-info">Fonoaudiología</span>
+        <span class="bubble-info">Educación Diferencial</span>
+        <span class="bubble-info">Talleres</span>
+      </div>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Neurorehabilitación infantil y juvenil</h3><p class="mt-2 text-sm text-ink-700">Psicomotor, funciones ejecutivas, autonomía.</p></article>
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Psicología</h3><p class="mt-2 text-sm text-ink-700">Evaluación y psicoterapia para todas las edades.</p></article>
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Terapia Ocupacional</h3><p class="mt-2 text-sm text-ink-700">Desempeño ocupacional e integración sensorial.</p></article>
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Fonoaudiología</h3><p class="mt-2 text-sm text-ink-700">Lenguaje, habla y deglución.</p></article>
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Educación Diferencial</h3><p class="mt-2 text-sm text-ink-700">Diagnóstico y apoyo pedagógico.</p></article>
+        <article class="card p-6 rounded-2xl bg-white border border-ink-100 fade-in-section"><h3 class="font-bold text-lg text-ink-900">Evaluaciones y talleres</h3><p class="mt-2 text-sm text-ink-700">Informes y orientación a familias y escuelas.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enfoque -->
+  <section id="metodo" class="py-16 bg-ink-50/80 border-y border-ink-100 rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <div class="fade-up">
+  <h2 class="text-3xl font-extrabold text-ink-900">Nuestro enfoque</h2>
+  <ul class="mt-4 space-y-3 text-ink-700">
+          <li class="flex gap-3"><svg class="mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Evaluación inicial y objetivos medibles.</span></li>
+          <li class="flex gap-3"><svg class="mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Trabajo coordinado y participación familiar.</span></li>
+          <li class="flex gap-3"><svg class="mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span>Reevaluaciones y seguimiento.</span></li>
+        </ul>
+        <div class="mt-6 flex gap-3">
+          <a href="evaluacion.html" class="px-5 py-3 rounded-full bg-ink-800 text-white font-semibold hover:bg-ink-700 shadow-soft">Agendar evaluación</a>
+          <a href="#preguntas" class="px-5 py-3 rounded-full border border-ink-400 font-semibold hover:bg-white">Preguntas frecuentes</a>
+        </div>
+      </div>
+  <div class="fade-up"><img src="/assets/img/hero-clinica.jpg" alt="Atención terapéutica" class="rounded-2xl shadow-soft"></div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section id="equipo" class="py-16 bg-white/80 rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-ink-900 fade-up">Equipo</h2>
+  <p class="mt-2 text-ink-700 fade-up">Haz clic en cada profesional para ver su perfil completo, horario y costo.</p>
+
+  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-section">
+        <!-- Jéssica -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/jessica.html', '_blank')">
+            <img src="/assets/img/jessica.jpg" alt="Jéssica Ruiz Varela" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Jéssica Ruiz Varela</p>
+                <p class="text-sm text-ink-600">Terapeuta Ocupacional</p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Yeniffer -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/yeniffer.html', '_blank')">
+            <img src="/assets/img/yeni.jpg" alt="Yeniffer Durán Ruiz" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Yeniffer Durán Ruiz</p>
+                <p class="text-sm text-ink-600">Terapeuta Ocupacional</p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Camila -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/camila.html', '_blank')">
+            <img src="/assets/img/camila.jpg" alt="Camila Veloso Sepúlveda" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Camila Veloso Sepúlveda</p>
+                <p class="text-sm text-ink-600">Fonoaudióloga</p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Alejandra -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/alejandra.html', '_blank')">
+            <img src="/assets/img/alejandra.jpg" alt="Alejandra Vallejos Meza" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Alejandra Vallejos Meza</p>
+                <p class="text-sm text-ink-600">Psicóloga</p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Emily -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/emily.html', '_blank')">
+            <img src="/assets/img/emily.jpg" alt="Emily Zúñiga Bravo" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Emily Zúñiga Bravo</p>
+                <p class="text-sm text-ink-600">Psicóloga</p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Ximena -->
+  <div class="card p-5 bg-white rounded-2xl border border-ink-100 anim-bounce cursor-pointer" onclick="window.open('equipo/ximena.html', '_blank')">
+            <img src="/assets/img/ximena.jpg" alt="Ximena Zúñiga Cerna" class="rounded-xl aspect-[4/3] object-cover"/>
+            <div class="flex items-center justify-between mt-3">
+              <div>
+                <p class="font-semibold">Ximena Zúñiga Cerna</p>
+                <p class="text-sm text-ink-600">Psicóloga</p>
+              </div>
+            </div>
+        </div>
+      </div>
+
+  <p class="text-xs text-ink-700 mt-6">* Valores y duración pueden variar por profesional. Política de cancelación: máximo 4 horas de anticipación. <a href="#cancelacion" class="underline">Ver más</a>. Prohibido mascotas.</p>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="py-16 bg-white/80 border-y border-ink-100 rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-ink-900 fade-up">Testimonios</h2>
+  <p class="mt-2 text-ink-700 fade-up">Promedio 5.0 ★ en Google.</p>
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+        <blockquote class="p-6 rounded-2xl bg-ink-50 border border-ink-100 fade-up"><p class="text-ink-900">“Excelente atención y acompañamiento. Notamos grandes avances.”</p><footer class="mt-3 text-sm text-ink-700">Familia de paciente</footer></blockquote>
+        <blockquote class="p-6 rounded-2xl bg-ink-50 border border-ink-100 fade-up"><p class="text-ink-900">“Equipo muy profesional y humano. Recomendado.”</p><footer class="mt-3 text-sm text-ink-700">Paciente adulto</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto + Google Maps -->
+  <section id="contacto" class="py-16 bg-ink-900/90 text-white rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-stretch">
+        <div class="flex flex-col justify-start">
+          <h2 class="text-3xl font-extrabold">Contacto</h2>
+          <ul class="mt-6 space-y-4 text-ink-200">
+            <li class="flex gap-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-1"><path d="M22 16.92V21a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 7.18 2 2 0 0 1 5 5h4.09a2 2 0 0 1 2 1.72l.45 3a2 2 0 0 1-.57 1.82L9.91 13a16 16 0 0 0 6.09 6.09l1.46-1.06a2 2 0 0 1 1.82-.57l3 .45A2 2 0 0 1 22 16.92z"/></svg>
+              <div>
+                <p class="font-semibold">Teléfono</p>
+                <a href="tel:+56937282799" class="hover:text-white/80">+56 9 3728 2799</a>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-1"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p class="font-semibold">Dirección</p>
+                <p>Caupolicán 110, piso 4, oficina 404, Temuco</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 mt-1">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="17" cy="7" r="1.2" fill="currentColor"/>
+              </svg>
+              <div>
+                <p class="font-semibold">Instagram</p>
+                <a href="https://www.instagram.com/centroneuroplus/" target="_blank" class="underline hover:text-white/80">@centroneuroplus</a>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-8 flex gap-3">
+            <a href="https://wa.me/56937282799" target="_blank" class="px-4 py-3 rounded-full bg-white text-ink-900 font-semibold hover:bg-ink-100 transition">WhatsApp</a>
+            <a href="tel:+56937282799" class="px-4 py-3 rounded-full border border-white/30 font-semibold hover:bg-white/20 transition">Llamar</a>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg bg-white/95 backdrop-blur flex flex-col">
+          <div id="map" class="w-full h-[300px] sm:h-[400px] lg:h-[450px] rounded-t-2xl"></div>
+          <button id="locateBtn" class="px-4 py-3 m-3 rounded-full border border-ink-200 text-sm bg-white text-ink-800 hover:bg-ink-100 transition font-medium">📍 Usar mi ubicación</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Política de cancelación -->
+  <section id="cancelacion" class="py-16 bg-white/80 border-t border-ink-100 rounded-2xl shadow-soft my-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-ink-900">Política de cancelación</h2>
+  <p class="mt-3 text-ink-700">Cancelaciones o reprogramaciones con al menos <strong>4 horas</strong> de anticipación. Ausencias o avisos fuera de plazo se registran como <em>sesión perdida</em>. Para reprogramar, escribe a <a class="text-white bg-ink-900 px-2 py-0.5 rounded" href="https://wa.me/56937282799" target="_blank">WhatsApp</a>. <a href="#infoUserBtn" class="text-ink-900 underline">Ver políticas de devolución</a>.</p>
+    </div>
+  </section>
+
+  <!-- Convenios -->
+  <section id="convenios" class="py-16 bg-white/80 border-t border-ink-100 rounded-2xl shadow-soft my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+  <h2 class="text-3xl font-extrabold text-ink-900 mb-2">Convenios</h2>
+  <div class="brand mt-8 flex flex-wrap justify-center gap-x-16 gap-y-8 items-center w-full">
+        <span class="logo-tooltip-wrapper">
+          <img src="/assets/logos/logo-santotomas.png" alt="Santo Tomás" class="h-24 object-contain mx-auto transition-transform duration-200 hover:scale-110 hover:drop-shadow-lg" data-tooltip="Santo Tomás"/>
+          <span class="logo-tooltip">Santo Tomás</span>
+        </span>
+        <span class="logo-tooltip-wrapper">
+          <img src="/assets/logos/logo-uctemuco.png" alt="Universidad Católica de Temuco" class="h-24 object-contain mx-auto transition-transform duration-200 hover:scale-110 hover:drop-shadow-lg" data-tooltip="Universidad Católica de Temuco"/>
+          <span class="logo-tooltip">Universidad Católica de Temuco</span>
+        </span>
+        <span class="logo-tooltip-wrapper">
+          <img src="/assets/logos/logo-contraloria.png" alt="Contraloría" class="h-24 object-contain mx-auto transition-transform duration-200 hover:scale-110 hover:drop-shadow-lg" data-tooltip="Contraloría"/>
+          <span class="logo-tooltip">Contraloría</span>
+        </span>
+        <span class="logo-tooltip-wrapper">
+          <img src="/assets/logos/logo-ipchile.png" alt="IP Chile" class="h-24 object-contain mx-auto transition-transform duration-200 hover:scale-110 hover:drop-shadow-lg" data-tooltip="IP Chile"/>
+          <span class="logo-tooltip">IP Chile</span>
+        </span>
+      </div>
+  <p class="mt-8 text-ink-700 w-full text-center">Para generar convenios contactar con:</p>
+      <div class="mt-3 w-full flex justify-center">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=centro.neuroplus@gmail.com&su=Convenio%20con%20Neuroplus" target="_blank" rel="noopener" class="px-5 py-3 rounded-full bg-ink-800 text-white font-semibold hover:bg-ink-700 shadow-soft">
+          Contacto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Animación de entrada para secciones didácticas
+    document.querySelectorAll('.fade-in-section').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+    });
+    // Menú y animaciones
+    document.getElementById('menuBtn')?.addEventListener('click',()=>{
+      const m=document.getElementById('mobileMenu');m.classList.toggle('hidden');
+    });
+    const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+    document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    // Google Maps
+    let map, clinicMarker, userMarker;
+    window.initMap = function(){
+      const centro = { lat: -38.7397, lng: -72.5984 }; // Temuco aprox.
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: centro, zoom: 16,
+        mapTypeControl:false, streetViewControl:false, fullscreenControl:true
+      });
+      clinicMarker = new google.maps.Marker({ position: centro, map, title: 'Centro Terapéutico Neuroplus' });
+    };
+
+    // Geolocalización
+    document.getElementById('locateBtn')?.addEventListener('click',()=>{
+      if(!navigator.geolocation){ alert('Geolocalización no disponible.'); return; }
+      navigator.geolocation.getCurrentPosition((pos)=>{
+        const you = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        if(!userMarker){
+          userMarker = new google.maps.Marker({
+            position: you, map, title: 'Tu ubicación',
+            icon:{ path: google.maps.SymbolPath.CIRCLE, scale:6, fillColor:'#18181b', fillOpacity:1, strokeWeight:2, strokeColor:'#ffffff' }
+          });
+        } else { userMarker.setPosition(you); }
+        map.panTo(you); map.setZoom(16);
+      }, (err)=>{ alert('No se pudo obtener tu ubicación: '+err.message); }, { enableHighAccuracy:true, timeout:10000, maximumAge:0 });
+    });
+
+    // Tooltip para logos de convenios
+    document.querySelectorAll('.logo-tooltip-wrapper').forEach(wrapper => {
+      const img = wrapper.querySelector('img');
+      const tooltip = wrapper.querySelector('.logo-tooltip');
+      img.addEventListener('mouseenter', () => tooltip.classList.add('visible'));
+      img.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+      img.addEventListener('focus', () => tooltip.classList.add('visible'));
+      img.addEventListener('blur', () => tooltip.classList.remove('visible'));
+    });
+  </script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const now = new Date();
+      const hour = now.getHours();
+      let greeting = 'buenos días';
+      if (hour >= 12 && hour < 18) greeting = 'buenas tardes';
+      else if (hour >= 18) greeting = 'buenas noches';
+      
+      // Menú de contacto
+      const reservarBtn = document.getElementById('reservarBtn');
+      const contactMenu = document.getElementById('contactMenu');
+      const whatsappOption = document.getElementById('whatsappOption');
+      const emailOption = document.getElementById('emailOption');
+      
+      // Toggle menu
+      reservarBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        contactMenu.classList.toggle('hidden');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!reservarBtn.contains(e.target) && !contactMenu.contains(e.target)) {
+          contactMenu.classList.add('hidden');
+        }
+      });
+      
+      // WhatsApp option
+      whatsappOption.addEventListener('click', function() {
+        const message = `Hola ${greeting} quisiera agendar una hora`;
+        const encoded = encodeURIComponent(message);
+        window.open(`https://wa.me/56937282799?text=${encoded}`, '_blank');
+        contactMenu.classList.add('hidden');
+      });
+      
+      // Email option
+      emailOption.addEventListener('click', function() {
+        const emailBody = `Hola%0A%0A${greeting}%2C%0A%0AMe contacto por este medio para agendar una hora en el Centro Neuroplus.%0A%0AAgradezco su atención.`;
+        window.location.href = `mailto:info@neuroplus.cl?subject=Agenda%20de%20hora&body=${emailBody}`;
+        contactMenu.classList.add('hidden');
+      });
+    });
+  </script>
+  <!-- Google Maps JS API -->
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ9-dCjqNcRec5X7X4AMCaecAMoqDDtuY&callback=initMap"></script>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-ink-200 bg-white/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-ink-600">
+      <p>&copy; 2026 Centro Terapéutico Neuroplus. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Políticas de Privacidad - Centro Terapéutico Neuroplus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui'] },
+          colors: {
+            ink: {
+              50:  '#f7fafc',
+              100: '#e3f2fd',
+              200: '#e1e6fa',
+              300: '#ffe4ec',
+              400: '#c8e6c9',
+              500: '#81d4fa',
+              600: '#ba68c8',
+              700: '#f48fb1',
+              800: '#1976d2',
+              900: '#1976d2',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    body {
+      background: linear-gradient(135deg, #e3f2fd 0%, #e1e6fa 40%, #ffe4ec 80%, #c8e6c9 100%);
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body class="bg-white/80 text-ink-900">
+  <!-- Header copied from other pages -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-ink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="/assets/branding/logo-neuroplus.png" alt="Neuroplus" class="h-14 w-auto"/>
+        <span class="sr-only">Neuroplus</span>
+      </a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium text-ink-700">
+        <a href="index.html#servicios" class="nav-link hover:text-ink-900">Servicios</a>
+        <div class="relative group">
+          <button class="nav-link hover:text-ink-900">Equipo</button>
+          <div class="absolute left-0 mt-2 w-48 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="equipo/jessica.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Jéssica Ruiz Varela</a>
+            <a href="equipo/yeniffer.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Yeniffer Durán Ruiz</a>
+            <a href="equipo/camila.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Camila Veloso Sepúlveda</a>
+            <a href="equipo/alejandra.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Alejandra Vallejos Meza</a>
+            <a href="equipo/emily.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Emily Zúñiga Bravo</a>
+            <a href="equipo/ximena.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Ximena Zúñiga Cerna</a>
+          </div>
+        </div>
+        <a href="index.html#metodo" class="nav-link hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="nav-link hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="nav-link hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="nav-link hover:text-ink-900">Convenios</a>
+        <div class="relative group">
+          <button id="infoUserBtn" class="nav-link hover:text-ink-900">Información para el usuario</button>
+          <div id="infoUserDropdown" class="absolute left-0 mt-2 w-48 bg-white border border-ink-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+            <a href="protocolos.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Protocolos</a>
+            <a href="privacidad.html" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Políticas de privacidad</a>
+            <a href="#" class="block px-4 py-2 text-sm text-ink-700 hover:bg-ink-100">Aranceles</a>
+          </div>
+        </div>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/56937282799" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink-800 text-white text-sm font-semibold hover:bg-ink-700 shadow-soft">Reservar hora</a>
+        <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-ink-100" aria-label="Abrir menú">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t border-ink-100 bg-white">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="index.html#servicios" class="hover:text-ink-900">Servicios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Equipo</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="equipo/jessica.html" class="block hover:text-ink-900">Jéssica Ruiz Varela</a>
+            <a href="equipo/yeniffer.html" class="block hover:text-ink-900">Yeniffer Durán Ruiz</a>
+            <a href="equipo/camila.html" class="block hover:text-ink-900">Camila Veloso Sepúlveda</a>
+            <a href="equipo/alejandra.html" class="block hover:text-ink-900">Alejandra Vallejos Meza</a>
+            <a href="equipo/emily.html" class="block hover:text-ink-900">Emily Zúñiga Bravo</a>
+            <a href="equipo/ximena.html" class="block hover:text-ink-900">Ximena Zúñiga Cerna</a>
+          </div>
+        </details>
+        <a href="index.html#metodo" class="hover:text-ink-900">Enfoque</a>
+        <a href="index.html#testimonios" class="hover:text-ink-900">Testimonios</a>
+        <a href="index.html#contacto" class="hover:text-ink-900">Contacto</a>
+        <a href="index.html#convenios" class="hover:text-ink-900">Convenios</a>
+        <details>
+          <summary class="hover:text-ink-900 cursor-pointer">Información para el usuario</summary>
+          <div class="ml-4 mt-2 space-y-1">
+            <a href="protocolos.html" class="block hover:text-ink-900">Protocolos</a>
+            <a href="privacidad.html" class="block hover=text-ink-900">Políticas de privacidad</a>
+            <a href="#" class="block hover:text-ink-900">Aranceles</a>
+          </div>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto bg-white/90 rounded-2xl p-6 shadow-soft mt-6 mb-12">
+    <h1 class="text-3xl font-extrabold mb-4">Políticas de Privacidad</h1>
+    <p class="mb-6">[Aquí irá el texto que describe cómo se maneja la información personal de los usuarios. Puedes agregar detalles sobre recopilación de datos, uso, almacenamiento y derechos de acceso, rectificación y eliminación.]</p>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-ink-200 bg-white/50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-ink-600">
+      <p>&copy; 2026 Centro Terapéutico Neuroplus. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
